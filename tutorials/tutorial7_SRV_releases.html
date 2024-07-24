@@ -1,0 +1,814 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DP0.2 Object Catalog tutorial – Part VII: SRV releases &#8212; SRV DP0.2 Tutorials</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/tutorial7_SRV_releases';</script>
+    <link rel="canonical" href="https://lsstdesc.github.io/srv-dp02/tutorials/tutorial7_SRV_releases.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="SRV DP0.2 Tutorials - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="SRV DP0.2 Tutorials - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    SRV DP0.2
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/LSSTDESC/srv-dp02/issues/new?title=Issue%20on%20page%20%2Ftutorials/tutorial7_SRV_releases.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tutorials/tutorial7_SRV_releases.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DP0.2 Object Catalog tutorial – Part VII: SRV releases</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-of-releases">Sets of releases:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-lsst-flags">Base LSST flags</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pixel-flags-center">Pixel flags (center)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pixel-flags-footprint">Pixel flags (footprint)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photometry-cuts">Photometry cuts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-flags">Extra flags</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hsm-shear-cuts">HSM shear cuts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#psf-validation-cuts">PSF validation cuts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-on-rubin-photometry-recommendations">Notes on Rubin photometry recommendations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-comparing-to-truth-tables">Note on comparing to truth tables</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dp0-2-object-catalog-tutorial-part-vii-srv-releases">
+<h1>DP0.2 Object Catalog tutorial – Part VII: SRV releases<a class="headerlink" href="#dp0-2-object-catalog-tutorial-part-vii-srv-releases" title="Link to this heading">#</a></h1>
+<p>Owners: <strong>PatriciaLarsen <a class="reference external" href="https://github.com/LSSTDESC/DC2-analysis/issues/new?body=&#64;patricialarsen">&#64;plarsen</a></strong><br />
+Last Verifed to Run: <strong>2024-06-04</strong> (by &#64;plarsen)</p>
+<p>This notebook will show you how to access the DP0.2 object catalog through the Generic Catalog Reader (GCR, <a class="github reference external" href="https://github.com/yymao/generic-catalog-reader">yymao/generic-catalog-reader</a>), or directly through the parquet files at nersc. We will talk through how to look at the metadata, and discuss how to read the data in an efficient manner.</p>
+<p><strong>Learning objectives</strong>:</p>
+<p>After going through this notebook, you should be able to:</p>
+<ol class="arabic simple">
+<li><p>Understand and apply the cuts recommended by the SRV group for various functionalities</p></li>
+<li><p>See the main validation tests that inform these cuts</p></li>
+</ol>
+<p><strong>Sections</strong>:</p>
+<p><strong>Note</strong>:</p>
+<ul class="simple">
+<li><p>This is a particularly draft notebook</p></li>
+</ul>
+<p><strong>Logistics</strong>: This notebook is intended to be run through the JupyterHub NERSC interface available here: <a class="reference external" href="https://jupyter.nersc.gov">https://jupyter.nersc.gov</a>. To setup your NERSC environment, please follow the instructions available here: <a class="reference external" href="https://confluence.slac.stanford.edu/display/LSSTDESC/Using+Jupyter+at+NERSC">https://confluence.slac.stanford.edu/display/LSSTDESC/Using+Jupyter+at+NERSC</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
+<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="nt">table</span><span class="w"> </span><span class="p">{</span><span class="k">margin-left</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="cp">!important</span><span class="p">;}</span>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+  table {margin-left: 0 !important;}
+</style>
+</div></div>
+</div>
+<section id="sets-of-releases">
+<h2>Sets of releases:<a class="headerlink" href="#sets-of-releases" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>better photoz around clusters (Markus’ work)</p></li>
+<li><p>shear catalog (HSM)</p></li>
+<li><p>etc.</p></li>
+</ul>
+<p>References:</p>
+<p><a class="reference external" href="https://academic.oup.com/pasj/article/70/SP1/S25/4774314#431908315">https://academic.oup.com/pasj/article/70/SP1/S25/4774314#431908315</a> (Mandelbaum et al)</p>
+<p><a class="reference external" href="https://iopscience.iop.org/article/10.3847/1538-4365/aab4f5">https://iopscience.iop.org/article/10.3847/1538-4365/aab4f5</a> (DES photometric data set)</p>
+<p>Things to look into: Systematics Tests In LEnsing</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="n">detect</span> <span class="n">isprimary</span> <span class="o">==</span> <span class="kc">True</span> <span class="n">Identify</span> <span class="n">unique</span> <span class="n">detections</span> <span class="n">only</span>
+<span class="n">i</span> <span class="n">deblend</span> <span class="n">skipped</span> <span class="o">==</span> <span class="kc">False</span> <span class="n">Deblender</span> <span class="n">skipped</span> <span class="n">this</span> <span class="n">group</span> <span class="n">of</span> <span class="n">objects</span>
+<span class="n">i</span> <span class="n">pixelflags</span> <span class="n">interpolatedcenter</span> <span class="o">==</span> <span class="kc">False</span> <span class="n">A</span> <span class="n">pixel</span> <span class="n">flagged</span> <span class="k">as</span> <span class="n">interpolated</span> <span class="ow">is</span> <span class="n">close</span> <span class="n">to</span> <span class="nb">object</span> <span class="n">center</span>
+<span class="n">i</span> <span class="n">pixelflags</span> <span class="n">saturatedcenter</span> <span class="o">==</span> <span class="kc">False</span> <span class="n">A</span> <span class="n">pixel</span> <span class="n">flagged</span> <span class="k">as</span> <span class="n">saturated</span> <span class="ow">is</span> <span class="n">close</span> <span class="n">to</span> <span class="nb">object</span> <span class="n">center</span>
+<span class="n">i</span> <span class="n">pixelflags</span> <span class="n">crcenter</span><span class="o">==</span> <span class="kc">False</span> <span class="n">A</span> <span class="n">pixel</span> <span class="n">flagged</span> <span class="k">as</span> <span class="n">a</span> <span class="n">cosmic</span> <span class="n">ray</span> <span class="n">hit</span> <span class="ow">is</span> <span class="n">close</span> <span class="n">to</span> <span class="nb">object</span> <span class="n">center</span>
+<span class="n">i</span> <span class="n">pixelflags</span> <span class="n">suspectcenter</span> <span class="o">==</span> <span class="kc">False</span> <span class="n">A</span> <span class="n">pixel</span> <span class="n">flagged</span> <span class="k">as</span> <span class="n">near</span> <span class="n">saturation</span> <span class="ow">is</span> <span class="n">close</span> <span class="n">to</span> <span class="nb">object</span> <span class="n">center</span>
+
+<span class="n">i</span> <span class="n">pixelflags</span> <span class="n">clipped</span> <span class="o">==</span> <span class="kc">False</span> <span class="n">Source</span> <span class="n">footprint</span> <span class="n">includes</span> <span class="n">clipped</span> <span class="n">pixels</span>
+<span class="n">i</span> <span class="n">pixelflags</span> <span class="n">edge</span> <span class="o">==</span> <span class="kc">False</span> <span class="n">Object</span> <span class="n">too</span> <span class="n">close</span> <span class="n">to</span> <span class="n">image</span> <span class="n">boundary</span> <span class="k">for</span> <span class="n">reliable</span> <span class="n">measurements</span>
+<span class="n">i</span> <span class="n">pixelflags</span> <span class="n">bad</span><span class="o">==</span> <span class="kc">False</span> <span class="n">A</span> <span class="n">pixel</span> <span class="n">flagged</span> <span class="k">as</span> <span class="n">otherwise</span> <span class="n">bad</span> <span class="ow">is</span> <span class="n">close</span> <span class="n">to</span> <span class="nb">object</span> <span class="n">center</span>
+
+<span class="n">i</span> <span class="n">extendedness</span> <span class="n">value</span> <span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>Extended<span class="w"> </span>object
+
+<span class="n">i</span> <span class="n">sdsscentroid</span> <span class="n">flag</span> <span class="o">==</span> <span class="kc">False</span> <span class="n">Centroid</span> <span class="n">measurement</span> <span class="n">failed</span>
+<span class="n">i</span> <span class="n">hsmshaperegauss</span> <span class="n">flag</span> <span class="o">==</span> <span class="kc">False</span> <span class="n">Error</span> <span class="n">code</span> <span class="n">returned</span> <span class="n">by</span> <span class="n">shape</span> <span class="n">measurement</span> <span class="n">code</span>
+<span class="n">i</span> <span class="n">hsmshaperegauss</span> <span class="n">sigma</span> <span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>NaN<span class="w"> </span>Shape<span class="w"> </span>measurement<span class="w"> </span>uncertainty<span class="w"> </span>should<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>NaN
+
+
+<span class="n">Galaxy</span> <span class="nb">property</span> <span class="n">cuts</span>
+<span class="n">i</span> <span class="n">cmodel</span> <span class="n">flux</span><span class="o">/</span><span class="n">i</span> <span class="n">cmodel</span> <span class="n">fluxerr</span> <span class="err">≥</span> <span class="mi">10</span> <span class="n">Galaxy</span> <span class="n">has</span> <span class="n">high</span> <span class="n">enough</span> <span class="n">S</span><span class="o">/</span><span class="n">N</span> <span class="ow">in</span> <span class="n">i</span><span class="o">-</span><span class="n">band</span>
+<span class="n">i</span> <span class="n">hsmshaperegauss</span> <span class="n">resolution</span> <span class="err">≥</span> <span class="mf">0.3</span> <span class="n">Galaxy</span> <span class="ow">is</span> <span class="n">sufficiently</span> <span class="n">resolved</span>
+<span class="p">(</span><span class="n">i</span> <span class="n">hsmshaperegauss</span> <span class="n">e12</span><span class="o">+</span><span class="n">i</span> <span class="n">hsmshaperegauss</span> <span class="n">e22</span>
+<span class="p">)</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="n">Cut</span> <span class="n">on</span> <span class="n">the</span> <span class="n">amplitude</span> <span class="n">of</span> <span class="n">galaxy</span> <span class="n">ellipticity</span>
+<span class="mi">0</span> <span class="err">≤</span><span class="n">i</span> <span class="n">hsmshaperegauss</span> <span class="n">sigma</span> <span class="err">≤</span> <span class="mf">0.4</span> <span class="n">Estimated</span> <span class="n">shape</span> <span class="n">measurement</span> <span class="n">error</span> <span class="ow">is</span> <span class="n">reasonable</span>
+<span class="n">i</span> <span class="n">cmodel</span> <span class="n">mag</span> <span class="err">−</span> <span class="n">a</span> <span class="n">i</span> <span class="err">≤</span> <span class="mf">24.5</span> <span class="n">CModel</span> <span class="n">Magnitude</span> <span class="n">cut</span>
+<span class="n">i</span> <span class="n">apertureflux</span> <span class="mi">10</span> <span class="n">mag</span> <span class="err">≤</span> <span class="mf">25.5</span> <span class="n">Aperture</span> <span class="p">(</span><span class="mi">1</span> <span class="n">arcsec</span> <span class="n">diameter</span><span class="p">)</span> <span class="n">magnitude</span> <span class="n">cut</span>
+<span class="n">i</span> <span class="n">blendedness</span> <span class="nb">abs</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="err">−</span><span class="mf">0.38</span> <span class="n">Avoid</span> <span class="n">spurious</span> <span class="n">detections</span> <span class="ow">and</span> <span class="n">those</span> <span class="n">contaminated</span> <span class="n">by</span> <span class="n">blend</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">20</span>
+    <span class="n">i</span> <span class="n">cmodel</span> <span class="n">flux</span><span class="o">/</span><span class="n">i</span> <span class="n">cmodel</span> <span class="n">fluxerr</span> <span class="err">≥</span> <span class="mi">10</span> <span class="n">Galaxy</span> <span class="n">has</span> <span class="n">high</span> <span class="n">enough</span> <span class="n">S</span><span class="o">/</span><span class="n">N</span> <span class="ow">in</span> <span class="n">i</span><span class="o">-</span><span class="n">band</span>
+                                   <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid character &#39;≥&#39; (U+2265)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="base-lsst-flags">
+<h2>Base LSST flags<a class="headerlink" href="#base-lsst-flags" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Flag name</p></th>
+<th class="head text-center"><p>True/False</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>detect_isPrimary</p></td>
+<td class="text-center"><p>True</p></td>
+<td class="text-center"><p>Removes duplicate detections (primarily from coadd edge regions) as well as skyobjects</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>refExtendedness</p></td>
+<td class="text-center"><p>1 (should be ne 0??)</p></td>
+<td class="text-center"><p>Source is classified as a galaxy</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>deblend_skipped</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Removes objects skipped by deblender</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="pixel-flags-center">
+<h3>Pixel flags (center)<a class="headerlink" href="#pixel-flags-center" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Flag name</p></th>
+<th class="head text-center"><p>True/False</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>g_pixelFlags_clippedCenter</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Center is close to clipped pixel</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>g_pixelFlags_crCenter</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Cosmic ray in source center</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>g_pixelFlags_edge</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Source outside usable exposure region</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>g_pixelFlags_inexact_psfCenter</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Source center close to inexact psf pixels</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>g_pixelFlags_interpolatedCenter</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Interpolated pixel in source center</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>g_pixelFlags_offimage</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Source center off image</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>g_pixelFlags_saturatedCenter</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Saturated pixel in source center</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>g_pixelFlags_sensor_edgeCenter</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Source center close to sensor edge pixel</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>g_pixelFlags_suspectCenter</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Source center close to suspect pixel</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="pixel-flags-footprint">
+<h3>Pixel flags (footprint)<a class="headerlink" href="#pixel-flags-footprint" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Flag name</p></th>
+<th class="head text-center"><p>True/False</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>g_pixelFlags_bad</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Shows a bad pixel in the source footprint</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>g_pixelFlags_clipped</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Footprint includes clipped pixels</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>g_pixelFlags_cr</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Cosmic ray in footprint</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>g_pixelFlags_inexact_psf</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Source includes inexact psf pixels</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>g_pixelFlags_interpolated</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Interpolated pixel in source footprint</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>g_pixelFlags_offimage</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Source center off image</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>g_pixelFlags_saturated</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Saturated pixel in source footprint</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>g_pixelFlags_sensor_edge</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Source footprint includes sensor edge pixel</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>g_pixelFlags_suspect</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Source footprint includes suspect pixel</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="photometry-cuts">
+<h3>Photometry cuts<a class="headerlink" href="#photometry-cuts" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Flag</p></th>
+<th class="head text-center"><p>True/False</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>i_cModel_flag</p></td>
+<td class="text-center"><p>False</p></td>
+<td class="text-center"><p>Failure of cModel fit</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Flag</p></th>
+<th class="head text-center"><p>Exact Cut</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>cmodel_magnitude</p></td>
+<td class="text-center"><p>mag(i_cModel_flux)&lt;24.5 *</p></td>
+<td class="text-center"><p>Limiting to match spectroscopic training and calibration data</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>cmodel S/N</p></td>
+<td class="text-center"><p>cModel_S/N &gt; 10</p></td>
+<td class="text-center"><p>restricting unforced signal to noise</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>blendedness</p></td>
+<td class="text-center"><p>i_blendedness &lt; 10^(-0.375)</p></td>
+<td class="text-center"><p>removing objects with strong neighbour contamination (not mildly blended objects)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>*note: should be after extinction correction but this is unavailable for DP0.2</p>
+</section>
+</section>
+<section id="extra-flags">
+<h2>Extra flags<a class="headerlink" href="#extra-flags" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Flag name</p></th>
+<th class="head text-center"><p>True/False</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>detect_isIsolated</p></td>
+<td class="text-center"><p>True</p></td>
+<td class="text-center"><p>Removes blended objects (test for deblender)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><a class="reference external" href="https://dm.lsst.org/sdm_schemas/browser/dp02.html">https://dm.lsst.org/sdm_schemas/browser/dp02.html</a></p>
+<section id="hsm-shear-cuts">
+<h3>HSM shear cuts<a class="headerlink" href="#hsm-shear-cuts" title="Link to this heading">#</a></h3>
+<p>g_hsmShapeRegauss_flag</p>
+</section>
+<section id="psf-validation-cuts">
+<h3>PSF validation cuts<a class="headerlink" href="#psf-validation-cuts" title="Link to this heading">#</a></h3>
+</section>
+<section id="notes-on-rubin-photometry-recommendations">
+<h3>Notes on Rubin photometry recommendations<a class="headerlink" href="#notes-on-rubin-photometry-recommendations" title="Link to this heading">#</a></h3>
+<p>(Direct quotes from LSST docs)</p>
+<p>For coadd (object) photometry of point sources, it is recommended to use <band>_psfFlux
+for the flux, <band>_psfFluxErr for the flux error, and <band>_pixelFlags_inexact_psfCenter to identify
+objects which may contain sources with poorly determined PSF photometry</p>
+<p>For photometry of extended sources: <band>_cModelFlux is a reasonable choice for galaxy fluxes, but the Gaussian aperture fluxes are generally preferred for galaxy colors. Of the many Gaussian aperture fluxes, the <band>_gaap1p0Flux (the sigma=1.0-arcsec Gaussian aperture) seems to be a reasonable choice. Currently, the Gaussian optimal aperture (<band>_gaapOptimalFlux) tends to fail often and is not generally recommended. For further information on Gaussian aperture photometry, please consult Kuijken (2008), Kuiken et al. (2015), and/or Konrad Kuijken’s talk at the March 2020 Rubin Observatory Algorithms Workshop (link).</p>
+</section>
+<section id="note-on-comparing-to-truth-tables">
+<h3>Note on comparing to truth tables<a class="headerlink" href="#note-on-comparing-to-truth-tables" title="Link to this heading">#</a></h3>
+<p>Truth catalog data: The TruthSummary and MatchesTruth tables are accessible via TAP (and not the Butler) as
+demonstrated in DP0.2 tutorial notebook “DP02_08_Truth_Tables.ipynb”. Additional truth data has been made
+available by DESC as parquet files in the shared disk space in the RSP at data.lsst.cloud, with access
+demonstrated in this DP0.2 contributed notebook. Find more information about the matching algorithm in
+Matching the Object and Truth Table</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Resolution</span> <span class="n">factor</span> <span class="p">[</span><span class="n">equation</span> <span class="p">(</span><span class="mi">4</span><span class="p">)]</span> <span class="n">R2</span> <span class="err">≥</span> <span class="mf">0.3</span><span class="o">.</span> <span class="n">A</span> <span class="n">completely</span> <span class="n">unresolved</span> <span class="nb">object</span> <span class="n">will</span> <span class="n">have</span> <span class="n">R2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="k">while</span> <span class="n">a</span>
+<span class="n">fully</span> <span class="n">resolved</span> <span class="n">one</span> <span class="n">will</span> <span class="n">have</span> <span class="n">R2</span> <span class="o">=</span> <span class="mf">1.</span>
+
+<span class="n">Total</span> <span class="n">magnitude</span> <span class="n">of</span> <span class="n">the</span> <span class="n">distortion</span> <span class="p">(</span><span class="n">after</span> <span class="n">PSF</span> <span class="n">correction</span><span class="p">)</span> <span class="n">defined</span> <span class="ow">in</span> <span class="n">equation</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="n">should</span> <span class="n">satisfy</span> <span class="n">the</span> <span class="n">constraint</span>
+<span class="o">|</span><span class="n">e</span><span class="o">|</span> <span class="o">&lt;</span> <span class="mf">2.</span> <span class="n">Due</span> <span class="n">to</span> <span class="n">noise</span><span class="p">,</span> <span class="n">the</span> <span class="n">distribution</span> <span class="n">of</span> <span class="n">distortion</span> <span class="n">values</span> <span class="n">extends</span> <span class="n">into</span> <span class="n">the</span> <span class="n">non</span><span class="o">-</span><span class="n">physical</span> <span class="o">|</span><span class="n">e</span><span class="o">|</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="n">regime</span><span class="o">.</span> 
+<span class="n">Truncating</span> <span class="n">the</span> <span class="n">distribution</span> <span class="n">too</span> <span class="n">aggressively</span> <span class="n">at</span> <span class="mi">1</span> <span class="n">leads</span> <span class="n">to</span> <span class="n">a</span> <span class="n">negative</span> <span class="n">shear</span> <span class="n">bias</span><span class="p">;</span> <span class="n">however</span><span class="p">,</span> <span class="n">some</span> <span class="n">truncation</span>
+<span class="ow">is</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">mean</span> <span class="n">shear</span> <span class="n">statistics</span> <span class="n">to</span> <span class="n">converge</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="n">catalog</span> <span class="n">estimate</span> <span class="n">of</span> <span class="n">the</span> <span class="n">shape</span> <span class="n">measurement</span> <span class="n">uncertainty</span> <span class="n">due</span> <span class="n">to</span> <span class="n">pixel</span> <span class="n">noise</span><span class="p">,</span> <span class="n">σe</span><span class="p">,</span> 
+<span class="n">should</span> <span class="n">lie</span> <span class="ow">in</span> <span class="n">the</span> <span class="nb">range</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]</span><span class="o">.</span> <span class="n">This</span> <span class="n">cut</span> <span class="n">removes</span> <span class="n">only</span> <span class="n">a</span> <span class="n">tiny</span> <span class="n">fraction</span> <span class="n">of</span> <span class="n">highly</span> <span class="n">anomalous</span> <span class="n">objects</span><span class="p">,</span> 
+<span class="o">&lt;</span><span class="mi">1</span><span class="o">%</span> <span class="n">of</span> <span class="n">those</span> <span class="n">that</span> <span class="k">pass</span> <span class="n">the</span> <span class="n">other</span> <span class="n">cuts</span><span class="o">.</span>
+
+<span class="n">Multi</span><span class="o">-</span><span class="n">band</span> <span class="n">detection</span> <span class="n">cut</span><span class="p">,</span> <span class="n">defined</span> <span class="n">by</span> <span class="n">requiring</span> <span class="n">at</span> <span class="n">least</span> <span class="n">two</span> <span class="n">other</span> <span class="n">bands</span> <span class="p">(</span><span class="n">out</span> <span class="n">of</span> <span class="n">grzy</span><span class="p">)</span> 
+<span class="n">to</span> <span class="n">have</span> <span class="n">a</span> <span class="n">cmodel</span> <span class="n">detection</span> <span class="n">significance</span> <span class="n">exceeding</span> <span class="mf">5.</span> <span class="n">This</span> <span class="n">cut</span> <span class="n">removes</span> <span class="n">a</span> <span class="n">very</span> <span class="n">small</span> <span class="n">fraction</span> <span class="n">of</span> <span class="n">objects</span><span class="p">,</span>
+<span class="o">&lt;</span><span class="mi">1</span><span class="o">%</span><span class="p">,</span> <span class="n">that</span> <span class="k">pass</span> <span class="n">our</span> <span class="n">other</span> <span class="n">cuts</span><span class="o">.</span> <span class="n">In</span> <span class="n">addition</span> <span class="n">to</span> <span class="n">ensuring</span> <span class="n">enough</span> <span class="n">color</span> <span class="n">information</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">a</span> <span class="n">photometric</span> <span class="n">redshift</span><span class="p">,</span> 
+<span class="n">this</span> <span class="n">cut</span> <span class="n">also</span> <span class="n">helps</span> <span class="n">remove</span> <span class="n">junk</span> <span class="n">detections</span><span class="p">,</span> <span class="n">asteroids</span> <span class="p">(</span><span class="n">Hildebrandt</span> <span class="n">et</span> <span class="n">al</span><span class="o">.</span> <span class="mi">2017</span><span class="p">),</span> <span class="ow">and</span> <span class="n">so</span> <span class="n">on</span><span class="o">.</span>
+
+
+<span class="n">As</span> <span class="n">noted</span> <span class="ow">in</span> <span class="n">sub</span><span class="o">-</span><span class="n">subsection</span> <span class="mf">2.3.3</span><span class="p">,</span> <span class="n">the</span> <span class="nb">object</span> <span class="n">must</span> <span class="n">lie</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">region</span> <span class="n">where</span> <span class="nb">all</span> 
+<span class="n">overlapping</span> <span class="n">exposures</span> <span class="n">contributed</span> <span class="n">to</span> <span class="n">the</span> <span class="n">coadd</span><span class="p">,</span> <span class="n">so</span> <span class="n">the</span> <span class="n">coadded</span> <span class="n">PSF</span> <span class="n">model</span> 
+<span class="p">(</span><span class="n">which</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">account</span> <span class="k">for</span> <span class="n">missing</span> <span class="n">pixels</span> <span class="n">within</span> <span class="n">sensors</span><span class="p">)</span> <span class="ow">is</span> <span class="n">correct</span><span class="o">.</span> 
+<span class="n">Due</span> <span class="n">to</span> <span class="n">a</span> <span class="n">bug</span> <span class="ow">in</span> <span class="n">hscPipe</span><span class="p">,</span> <span class="n">this</span> <span class="n">filtering</span> <span class="n">was</span> <span class="ow">not</span> <span class="n">complete</span><span class="p">;</span> <span class="n">a</span> <span class="n">small</span> <span class="n">number</span> <span class="n">of</span>
+<span class="n">objects</span> <span class="n">lying</span> <span class="n">on</span> <span class="n">CCD</span> <span class="n">boundaries</span><span class="p">,</span> <span class="n">sensor</span> <span class="n">defects</span><span class="p">,</span> <span class="ow">or</span> <span class="n">cosmic</span> <span class="n">rays</span> <span class="n">were</span> <span class="ow">not</span> <span class="n">flagged</span> 
+<span class="n">by</span> <span class="n">the</span> <span class="n">pipeline</span> <span class="ow">and</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">removed</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">cut</span><span class="o">.</span> <span class="n">The</span> <span class="n">internal</span> <span class="n">PSF</span> <span class="n">quality</span> <span class="n">tests</span> 
+<span class="ow">in</span> <span class="n">subsection</span> <span class="mf">4.2</span> <span class="n">are</span> <span class="n">sensitive</span> <span class="n">to</span> <span class="n">this</span> <span class="n">problem</span><span class="p">,</span> <span class="n">however</span><span class="p">,</span> <span class="ow">and</span> <span class="n">demonstrate</span> <span class="n">that</span> <span class="n">its</span> <span class="n">effects</span> 
+<span class="n">do</span> <span class="ow">not</span> <span class="n">cause</span> <span class="n">the</span> <span class="n">PSF</span> <span class="n">model</span> <span class="n">errors</span> <span class="n">to</span> <span class="n">exceed</span> <span class="n">our</span> <span class="n">requirements</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "desc-python",
+            path: "./tutorials"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'desc-python'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-of-releases">Sets of releases:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-lsst-flags">Base LSST flags</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pixel-flags-center">Pixel flags (center)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pixel-flags-footprint">Pixel flags (footprint)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photometry-cuts">Photometry cuts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-flags">Extra flags</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hsm-shear-cuts">HSM shear cuts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#psf-validation-cuts">PSF validation cuts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-on-rubin-photometry-recommendations">Notes on Rubin photometry recommendations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-comparing-to-truth-tables">Note on comparing to truth tables</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By LSST DESC
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,746 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DP0.2 Object Catalog tutorial – Part II: Beyond-GCR access &#8212; SRV DP0.2 Tutorials</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/tutorial2_alternate_reads';</script>
+    <link rel="canonical" href="https://lsstdesc.github.io/srv-dp02/tutorials/tutorial2_alternate_reads.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="SRV DP0.2 Tutorials - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="SRV DP0.2 Tutorials - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    SRV DP0.2
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/LSSTDESC/srv-dp02/issues/new?title=Issue%20on%20page%20%2Ftutorials/tutorial2_alternate_reads.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tutorials/tutorial2_alternate_reads.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DP0.2 Object Catalog tutorial – Part II: Beyond-GCR access</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-this">Why do this?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-object-catalog-metadata-with-the-gcr">Accessing the object catalog metadata with the GCR</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dp0-2-object-catalog-schema">DP0.2 object catalog Schema</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-to-access-this-dataset">Methods to access this dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#format-notes">Format notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-filters">Creating filters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-tools">Advanced tools</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dp0-2-object-catalog-tutorial-part-ii-beyond-gcr-access">
+<h1>DP0.2 Object Catalog tutorial – Part II: Beyond-GCR access<a class="headerlink" href="#dp0-2-object-catalog-tutorial-part-ii-beyond-gcr-access" title="Link to this heading">#</a></h1>
+<p>Owners: <strong>PatriciaLarsen <a class="reference external" href="https://github.com/LSSTDESC/DC2-analysis/issues/new?body=&#64;patricialarsen">&#64;plarsen</a></strong><br />
+Last Verifed to Run: <strong>2024-06-04</strong> (by &#64;plarsen)</p>
+<p>This notebook will show you how to access the DP0.2 object catalog directly through the parquet files at nersc, using the Generic Catalog Reader (GCR, <a class="github reference external" href="https://github.com/yymao/generic-catalog-reader">yymao/generic-catalog-reader</a>) to access the file locations and metadata. We will discuss why you may want to do this, and how to do some basic tasks efficiently.</p>
+<p><strong>Learning objectives</strong>:</p>
+<p>After going through this notebook, you should be able to:</p>
+<ol class="arabic simple">
+<li><p>Access the DP0.2 object catalog directly using parquet functions for more advanced read-in options</p></li>
+</ol>
+<p><strong>Future additions</strong>:</p>
+<ol class="arabic simple">
+<li><p>Get the SRV filters</p></li>
+<li><p>Add join with truth tables here and some more examples of advanced use cases</p></li>
+</ol>
+<p><strong>Logistics</strong>: This notebook is intended to be run through the JupyterHub NERSC interface available here: <a class="reference external" href="https://jupyter.nersc.gov">https://jupyter.nersc.gov</a>. To setup your NERSC environment, please follow the instructions available here: <a class="reference external" href="https://confluence.slac.stanford.edu/display/LSSTDESC/Using+Jupyter+at+NERSC">https://confluence.slac.stanford.edu/display/LSSTDESC/Using+Jupyter+at+NERSC</a></p>
+<section id="why-do-this">
+<h2>Why do this?<a class="headerlink" href="#why-do-this" title="Link to this heading">#</a></h2>
+<p>There are two main reasons we’re providing this information.</p>
+<ul class="simple">
+<li><p>Firstly while we can provide a straightforward read method using the GCR, this has been developed with the intention of being agnostic to data format. However for the object catalogs we can expect these will stay in parquet format, and we find that some DESC members want access to methods which they can access through the parquet file paths or handles, which are not easily translated to other data formats.</p></li>
+<li><p>Secondly there’s a question of choice and ease. Some codes may work with direct parquet reads and rewriting them to use the GCR may not be time-effective, and people who are comfortable using parquet files may prefer direct access to better optimize and understand what they’re doing.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">pyarrow.compute</span> <span class="k">as</span> <span class="nn">pc</span>
+<span class="kn">import</span> <span class="nn">pyarrow.dataset</span> <span class="k">as</span> <span class="nn">ds</span>
+<span class="kn">from</span> <span class="nn">GCR.utils</span> <span class="kn">import</span> <span class="n">concatenate_1d</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="accessing-the-object-catalog-metadata-with-the-gcr">
+<h2>Accessing the object catalog metadata with the GCR<a class="headerlink" href="#accessing-the-object-catalog-metadata-with-the-gcr" title="Link to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://github.com/LSSTDESC/gcr-catalogs">GCRCatalogs</a> package is a DESC project which aims at gathering in one convenient location various simulation/data catalogs made available to the collaboration.</p>
+<p>Here we will show you how to access the information on the direct parquet handles and file locations available through the GCR, for the object catalogs from DC2 Run2.2i that the Rubin project ran using the DMStack, DP0.2 (data preview 0.2).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;/global/cfs/projectdirs/lsst/groups/SRV/gcr-catalogs-test&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">GCRCatalogs</span>
+
+<span class="c1"># Load the object catalog</span>
+<span class="n">catalog</span> <span class="o">=</span> <span class="n">GCRCatalogs</span><span class="o">.</span><span class="n">load_catalog</span><span class="p">(</span><span class="s1">&#39;lsst_object_full&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A significant numbers of cosmology catalogs besides the DP0.2 object catalogs are also available through the GCR, use <code class="docutils literal notranslate"><span class="pre">sorted(GCRCatalogs.get_available_catalogs(False))</span></code> to see a full list and visit the <a class="reference external" href="https://confluence.slac.stanford.edu/display/LSSTDESC/DC2+Data+Product+Overview">DC2 Data Product</a> page to see all the DC2-related catalogs.</p>
+<section id="dp0-2-object-catalog-schema">
+<h3>DP0.2 object catalog Schema<a class="headerlink" href="#dp0-2-object-catalog-schema" title="Link to this heading">#</a></h3>
+<p>The quantities available in the catalog can be found on the project website here: <a class="reference external" href="https://dm.lsst.org/sdm_schemas/browser/dp02.html">https://dm.lsst.org/sdm_schemas/browser/dp02.html</a>, but we can also access these from the GCR in the following way. Note that these methods are equivalent, for this specific catalog named lsst_object we have done no quantity translation and so it’s safe to assume that these follow the lsst conventions exactly.</p>
+<p>Note that for comparisons between the DP0.2 and DC2 object catalogs you may prefer to use a translation layer to convert the DP0.2 catalog into DC2 conventions before read-in, this is available by using dp02_object rather than lsst_object. We will cover the use of the translated catalog in a different tutorial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quantity_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">catalog</span><span class="o">.</span><span class="n">list_all_native_quantities</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">quantity_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">get_quantity_info</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;------------------&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type: &#39;</span> <span class="o">+</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;Units: &#39;</span> <span class="o">+</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;unit&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coord_dec
+------------------
+Fiducial ICRS Declination of centroid used for database indexing
+Type: double, Units: deg
+ 
+coord_ra
+------------------
+Fiducial ICRS Right Ascension of centroid used for database indexing
+Type: double, Units: deg
+ 
+deblend_nChild
+------------------
+Number of children this object has (defaults to 0)
+Type: int32, Units: none
+ 
+deblend_skipped
+------------------
+Deblender skipped this source
+Type: boolean, Units: none
+ 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="methods-to-access-this-dataset">
+<h2>Methods to access this dataset<a class="headerlink" href="#methods-to-access-this-dataset" title="Link to this heading">#</a></h2>
+<p>First let’s show you how to use GCR to directly access the Parquet file handle. This handle is simply opening the Parquet file as in the code snippet that follows. If there is a use-case in which you need a different access method the file path is also available</p>
+<p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pyarrow.parquet</span> <span class="pre">as</span> <span class="pre">pq</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">handle</span> <span class="pre">=</span> <span class="pre">pq.ParquetFile(self.path)</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">parquet_data</span> <span class="ow">in</span> <span class="n">catalog</span><span class="o">.</span><span class="n">_datasets</span><span class="p">[:</span><span class="mi">2</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dataset info: &#39;</span><span class="p">,</span> <span class="n">parquet_data</span><span class="o">.</span><span class="n">info</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dataset handle: &#39;</span><span class="p">,</span> <span class="n">parquet_data</span><span class="o">.</span><span class="n">handle</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dataset path: &#39;</span><span class="p">,</span> <span class="n">parquet_data</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset info:  {&#39;tract&#39;: 2897}
+Dataset handle:  &lt;pyarrow.parquet.core.ParquetFile object at 0x7f5acc3a77f0&gt;
+Dataset path:  /global/cfs/cdirs/lsst/shared/rubin/DP0.2/objectTable/objectTable_tract_2897_DC2_2_2i_runs_DP0_2_v23_0_1_PREOPS-905_step3_1_20220317T233937Z.parq
+ 
+Dataset info:  {&#39;tract&#39;: 2898}
+Dataset handle:  &lt;pyarrow.parquet.core.ParquetFile object at 0x7f5ab2e8ce80&gt;
+Dataset path:  /global/cfs/cdirs/lsst/shared/rubin/DP0.2/objectTable/objectTable_tract_2898_DC2_2_2i_runs_DP0_2_v23_0_1_PREOPS-905_step3_1_20220308T153907Z.parq
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<section id="format-notes">
+<h3>Format notes<a class="headerlink" href="#format-notes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>you need to know which filter notation you need, in this case we use pyarrow.compute filters. There’s a conversion script between string filters and pyarrow.compute filters below for convenience</p></li>
+</ul>
+<p>Let’s first try an iterative read (reducing memory requirements) and concatenate the results</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="c1"># take the file handles and combine them into a dataset</span>
+<span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">parquet_data</span><span class="o">.</span><span class="n">path</span> <span class="k">for</span> <span class="n">parquet_data</span> <span class="ow">in</span> <span class="n">catalog</span><span class="o">.</span><span class="n">_datasets</span><span class="p">]</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">dataset</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+
+<span class="nb">filter</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s1">&#39;detect_isPrimary&#39;</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">pc</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s2">&quot;r_ra&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pc</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s2">&quot;r_decl&quot;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="n">ra_full</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">dec_full</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_batches</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;r_ra&quot;</span><span class="p">,</span><span class="s2">&quot;r_decl&quot;</span><span class="p">],</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,):</span>
+    <span class="n">ra_full</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s2">&quot;r_ra&quot;</span><span class="p">])</span>
+    <span class="n">dec_full</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s2">&quot;r_decl&quot;</span><span class="p">])</span>
+<span class="n">time_end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">ra_full</span> <span class="o">=</span> <span class="n">concatenate_1d</span><span class="p">(</span><span class="n">ra_full</span><span class="p">)</span>
+<span class="n">dec_full</span> <span class="o">=</span> <span class="n">concatenate_1d</span><span class="p">(</span><span class="n">dec_full</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">ra_full</span><span class="p">,</span><span class="n">dec_full</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time_end</span><span class="o">-</span><span class="n">time_start</span><span class="p">),</span> <span class="s1">&#39;seconds to read data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d9a2de576ea1a7a6e16b3fe83e8e4629829d80f84d82f5d55270724f364433ed.png" src="../_images/d9a2de576ea1a7a6e16b3fe83e8e4629829d80f84d82f5d55270724f364433ed.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13 seconds to read data
+</pre></div>
+</div>
+</div>
+</div>
+<p>and then a full read into a pyarrow table format (you can just use a .to_pandas() to convert it to a pandas table if you prefer those)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="c1"># take the file handles and combine them into a dataset</span>
+<span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">parquet_data</span><span class="o">.</span><span class="n">path</span> <span class="k">for</span> <span class="n">parquet_data</span> <span class="ow">in</span> <span class="n">catalog</span><span class="o">.</span><span class="n">_datasets</span><span class="p">]</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">dataset</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+
+<span class="nb">filter</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s1">&#39;detect_isPrimary&#39;</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">pc</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s2">&quot;r_ra&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pc</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s2">&quot;r_decl&quot;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_table</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;r_ra&quot;</span><span class="p">,</span><span class="s2">&quot;r_decl&quot;</span><span class="p">],</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,)</span>
+
+<span class="n">time_end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;r_ra&#39;</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;r_decl&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time_end</span><span class="o">-</span><span class="n">time_start</span><span class="p">),</span> <span class="s1">&#39;seconds to read data&#39;</span><span class="p">)</span>
+
+<span class="n">pandas_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d9a2de576ea1a7a6e16b3fe83e8e4629829d80f84d82f5d55270724f364433ed.png" src="../_images/d9a2de576ea1a7a6e16b3fe83e8e4629829d80f84d82f5d55270724f364433ed.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3 seconds to read data
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-filters">
+<h3>Creating filters<a class="headerlink" href="#creating-filters" title="Link to this heading">#</a></h3>
+<p>If you’re not familiar with pyarrow filters or have a big string of GCR filters and want a conversion script the below should work</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">numexpr</span> <span class="k">as</span> <span class="nn">ne</span>
+
+
+<span class="k">def</span> <span class="nf">convert_to_pyarrow_filter</span><span class="p">(</span><span class="n">filter_list</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">filter_list</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">ne</span><span class="o">.</span><span class="n">necompiler</span><span class="o">.</span><span class="n">precompile</span><span class="p">(</span><span class="n">filter_list</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">filter_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;\b(</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">)\b&quot;</span><span class="p">,</span> <span class="s2">&quot;pc.field(</span><span class="se">\&quot;\\</span><span class="s2">1</span><span class="se">\&quot;</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">filter_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">total_query</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">filter_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">filter_list</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">filter_list</span><span class="p">)):</span>
+            <span class="n">total_query</span> <span class="o">=</span> <span class="n">total_query</span><span class="o">&amp;</span><span class="nb">eval</span><span class="p">(</span><span class="n">filter_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">total_query</span>
+    
+<span class="n">convert_to_pyarrow_filter</span><span class="p">([</span><span class="s1">&#39;detect_isPrimary&#39;</span><span class="p">,</span> <span class="s2">&quot;r_ra &gt; 0&quot;</span><span class="p">,</span> <span class="s2">&quot;r_decl &lt; -40&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pyarrow.compute.Expression ((detect_isPrimary and (r_ra &gt; 0)) and (r_decl &lt; -40))&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="c1"># take the file handles and combine them into a dataset</span>
+<span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">parquet_data</span><span class="o">.</span><span class="n">path</span> <span class="k">for</span> <span class="n">parquet_data</span> <span class="ow">in</span> <span class="n">catalog</span><span class="o">.</span><span class="n">_datasets</span><span class="p">]</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">dataset</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+
+<span class="nb">filter</span> <span class="o">=</span> <span class="n">convert_to_pyarrow_filter</span><span class="p">([</span><span class="s1">&#39;detect_isPrimary&#39;</span><span class="p">,</span> <span class="s2">&quot;r_ra &gt; 0&quot;</span><span class="p">,</span> <span class="s2">&quot;r_decl &lt; -40&quot;</span><span class="p">])</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_table</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;r_ra&quot;</span><span class="p">,</span><span class="s2">&quot;r_decl&quot;</span><span class="p">],</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,)</span>
+
+<span class="n">time_end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;r_ra&#39;</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;r_decl&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time_end</span><span class="o">-</span><span class="n">time_start</span><span class="p">),</span> <span class="s1">&#39;seconds to read data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d9a2de576ea1a7a6e16b3fe83e8e4629829d80f84d82f5d55270724f364433ed.png" src="../_images/d9a2de576ea1a7a6e16b3fe83e8e4629829d80f84d82f5d55270724f364433ed.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 seconds to read data
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="advanced-tools">
+<h2>Advanced tools<a class="headerlink" href="#advanced-tools" title="Link to this heading">#</a></h2>
+<p>With parquet datasets you can use some more advanced tooling through the compute tool. Let’s say you want to combine two datasets, like the object catalog and the truth match catalog. You can do that through the join function.</p>
+<p>import pyarrow.dataset as ds</p>
+<p>ds1 = ds.dataset(table1)
+ds2 = ds.dataset(table2)</p>
+<p>joined_ds = ds1.join(ds2, key=”id”)</p>
+<p>You can create a scanner over the data, where the scanner doesn’t run immediately but exposes the ability to run and then apply other methods. This can be especially useful for applying extra filters.</p>
+<p>dataset.scanner(filter=ds.field(“year”) &gt; 2020).to_table()</p>
+<p>You can acess the acero framework to do operations over batched data in an efficient way (which underlies the dataset methods). But if you do so you should note that:</p>
+<p><em>“Acero is not intended to be used directly by data scientists. It is expected that end users will typically be using some kind of frontend. For example, Pandas, Ibis, or SQL. The API for Acero is focused around capabilities and available algorithms. However, such users may be interested in knowing more about how Acero works so that they can better understand how the backend processing for their libraries operates.”</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "desc-python",
+            path: "./tutorials"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'desc-python'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-this">Why do this?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-object-catalog-metadata-with-the-gcr">Accessing the object catalog metadata with the GCR</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dp0-2-object-catalog-schema">DP0.2 object catalog Schema</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-to-access-this-dataset">Methods to access this dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#format-notes">Format notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-filters">Creating filters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-tools">Advanced tools</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By LSST DESC
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
