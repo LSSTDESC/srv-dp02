@@ -7,4 +7,4 @@ title: Home
 parts:
 - caption: Tutorials
   chapters:
-  - glob: tutorials/tutorial*
+  - glob: tutorials/*
