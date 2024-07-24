@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DP0.2 Object Catalog tutorial – Part IV: Running DESCQA &#8212; SRV DP0.2 Tutorials</title>
+    <title>Running DESCQA &#8212; SRV DP0.2 Tutorials</title>
   
   
   
@@ -62,7 +62,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="&lt;no title&gt;" href="tutorial5_DC2_comparison.html" />
-    <link rel="prev" title="DP0.2 Object Catalog tutorial – Part III: Using Rubin analysis tools" href="tutorial3_Rubin_analysistools.html" />
+    <link rel="prev" title="Using Rubin analysis tools" href="tutorial3_Rubin_analysistools.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,11 +183,11 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DP02_intro.html">DP0.2 Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial1_reading_objects.html">DP0.2 Object Catalog tutorial – Part I: GCR access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial2_alternate_reads.html">DP0.2 Object Catalog tutorial – Part II: Beyond-GCR access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial3_Rubin_analysistools.html">DP0.2 Object Catalog tutorial – Part III: Using Rubin analysis tools</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">DP0.2 Object Catalog tutorial – Part IV: Running DESCQA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial7_SRV_releases.html">DP0.2 Object Catalog tutorial – Part VII: SRV releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1_reading_objects.html">GCR access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2_alternate_reads.html">Beyond-GCR access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3_Rubin_analysistools.html">Using Rubin analysis tools</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Running DESCQA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial7_SRV_releases.html">SRV releases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial8_DMStack_NERSC.html">Running SSI using Rubin pipelines (move this)</a></li>
 </ul>
 
@@ -342,7 +342,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>DP0.2 Object Catalog tutorial – Part IV: Running DESCQA</h1>
+    <h1>Running DESCQA</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,8 +372,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="dp0-2-object-catalog-tutorial-part-iv-running-descqa">
-<h1>DP0.2 Object Catalog tutorial – Part IV: Running DESCQA<a class="headerlink" href="#dp0-2-object-catalog-tutorial-part-iv-running-descqa" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="running-descqa">
+<h1>Running DESCQA<a class="headerlink" href="#running-descqa" title="Link to this heading">#</a></h1>
 <p>Owners: <strong>PatriciaLarsen <a class="reference external" href="https://github.com/LSSTDESC/DC2-analysis/issues/new?body=&#64;patricialarsen">&#64;plarsen</a></strong><br />
 Last Verifed to Run: <strong>2024-06-04</strong> (by &#64;plarsen)</p>
 <p>This notebook will show you how to run the SRV-DESCQA validation tools. We’ll show you how to submit jobs to run them through the terminal, how to develop tests interactively on a notebook and how to look at the results.</p>
@@ -381,7 +381,7 @@ Last Verifed to Run: <strong>2024-06-04</strong> (by &#64;plarsen)</p>
 <h2>List of tests<a class="headerlink" href="#list-of-tests" title="Link to this heading">#</a></h2>
 <p>Below you can see a chart of the currently implemented tests - purple (left-most) are photometry tests, green (second set) are shape tests, blue (middle column) are tests of flags, pink (fourth column) are external tests and teal (right) are interactive tests.</p>
 <p>These are not guaranteed to be a complete set, if there’s anything you’d like in the test suite which isn’t implemented please ping the SRV group (current convenors Patricia and Yao) to add it to our list.</p>
-<img src="test_direc/SRV_tests.png" width=900 height=900 />
+<img src="test_direc/SRV_tests.png" width=900 height=900 /><p><img alt="" src="tutorials/test_direc/SRV_tests.png%22" /></p>
 </section>
 <section id="dp0-2">
 <h2>DP0.2<a class="headerlink" href="#dp0-2" title="Link to this heading">#</a></h2>
@@ -406,7 +406,7 @@ Last Verifed to Run: <strong>2024-06-04</strong> (by &#64;plarsen)</p>
 <p>First let’s start by doing some imports and defining some functions</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># this is fairly minimal, imports and select_subset, interpret_results functions hidden for tidiness</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils.utils</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># this is fairly minimal, imports and select_subset, interpret_results functions hidden for tidiness</span>
 </pre></div>
 </div>
 </div>
@@ -762,7 +762,7 @@ approx. 72.5989 sq. deg.
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">DP0.2 Object Catalog tutorial – Part III: Using Rubin analysis tools</p>
+        <p class="prev-next-title">Using Rubin analysis tools</p>
       </div>
     </a>
     <a class="right-next"
