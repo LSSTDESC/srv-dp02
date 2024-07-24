@@ -1,0 +1,19 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: SRV DP0.2 Tuturials
+author: LSST DESC
+copyright: "2024"
+logo: logo.png
+exclude_patterns: [".github", ".gitignore"]
+
+execute:
+  execute_notebooks: off
+
+html:
+  use_issues_button: true
+  baseurl: https://lsstdesc.github.io/srv-dp02
+
+repository:
+  url: https://github.com/LSSTDESC/srv-dp02
+  branch: main
