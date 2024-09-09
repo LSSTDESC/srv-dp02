@@ -1,12 +1,17 @@
-# SRV DP0.2
+# SRV Tutorials
 
-Owners: **PatriciaLarsen [@plarsen](https://github.com/LSSTDESC/DC2-analysis/issues/new?body=@patricialarsen)**  
-Last Verifed to Run: **2024-06-04** (by @plarsen)
+Welcome to the Science Release and Validation (SRV) tutorials for data access! While we wait impatiently for data arrival, we're showing you how to access a data preview (DP) on simulated data. This may be useful for setting up pipelines, testing the image&#8594;catalog methodology, creating validation tools, and seeing what sort of information will be available to you once the data arrives. 
 
-DP0.2 is a Rubin Observatory LSST data preview, based on images from the DC2 data challenge by LSST-DESC (https://arxiv.org/abs/2010.05926). This was processed using version 23 of the [LSST Science Pipelines](https://pipelines.lsst.io/) on the wide-fast-deep (WFD) field with a baseline cadence. You can find a huge amount of information on the DP0.2 data [here](https://dp0-2.lsst.io/)
+```{note}
+This tutorial aims to showcase the role of SRV, and our plans for data arrival. If you have any suggestions or concerns, please contact the desc-srv group on slack.
+```
 
-For the contexts of these tutorials we're showing how to use the DP0.2 data available on NERSC. This is for the most part catalog-level data stored in flat files, most often in parquet format. If you would like to use the full set of DP0.2 data available, you can do so by becoming a DP0.2 delegate and accessing the data on the RSP. Delegate applications are currently open to all data rights holders, and you can follow the instructions [here](https://dp0.lsst.io/delegate-resources/index.html). 
+### SRV
+The SRV group is primarily responsible for the curation and validation of DESC science release data, and additionally serves as a point of contact for any data-related issues or questions. The most notable difference between this work and related groups in other collaborations is the enormous effort undertaken prior to data access from the Rubin Observatory LSST project to ensure data quality for a wide range of science cases, and so we are a small group, working to bridge the gap between the Rubin LSST project, DESC working groups and the wider DESC community. 
 
+### The tutorials
+These tutorials will focus on using the object catalogs that are available on NERSC. We summarize important aspects of the data in the {ref}`DP02-tutorial`, before discussing how to access the data, develop or run validation tools, understand the release flags and perform advanced tasks. 
 
 ```{tableofcontents}
 ```
+
