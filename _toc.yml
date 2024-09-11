@@ -5,6 +5,15 @@ format: jb-book
 root: index
 title: Home
 parts:
-- caption: Tutorials
+- caption: Tutorials (Rubin data)
   chapters:
-  - glob: tutorials/*
+  - glob: tutorials/Rubin/*
+- caption: Tutorials (DESC products)
+  chapters:
+  - glob: tutorials/DESC/*
+- caption: Plans for data arrival
+  chapters:
+  - glob: plans/*
+- caption: Advanced topics
+  chapters: 
+  - glob: advanced/*
