@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,11 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/tutorial8_DMStack_NERSC';</script>
-    <link rel="canonical" href="https://lsstdesc.github.io/srv-dp02/tutorials/tutorial8_DMStack_NERSC.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'advanced/tutorial8_DMStack_NERSC';</script>
+    <link rel="canonical" href="https://lsstdesc.github.io/srv-dp02/advanced/tutorial8_DMStack_NERSC.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="SRV releases" href="tutorial7_SRV_releases.html" />
+    <link rel="prev" title="Plans for data provision" href="../plans/data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,18 +175,25 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    SRV DP0.2
+                    SRV Tutorials
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials (Rubin data)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Rubin/DP02_intro.html">DP0.2 Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Rubin/tutorial1_reading_objects.html">GCR access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Rubin/tutorial2_alternate_reads.html">Beyond-GCR access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Rubin/tutorial3_Rubin_analysistools.html">Using Rubin analysis tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Rubin/tutorial4_using_DESCQA.html">Running DESCQA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Rubin/tutorial7_SRV_releases.html">SRV releases</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Plans for data arrival</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../plans/data.html">Plans for data provision</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="DP02_intro.html">DP0.2 Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial1_reading_objects.html">GCR access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial2_alternate_reads.html">Beyond-GCR access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial3_Rubin_analysistools.html">Using Rubin analysis tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial4_using_DESCQA.html">Running DESCQA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial7_SRV_releases.html">SRV releases</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Running SSI using Rubin pipelines (move this)</a></li>
 </ul>
 
@@ -231,7 +238,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/LSSTDESC/srv-dp02/issues/new?title=Issue%20on%20page%20%2Ftutorials/tutorial8_DMStack_NERSC.html&body=Your%20issue%20content%20here." target="_blank"
+<a href="https://github.com/LSSTDESC/srv-dp02/issues/new?title=Issue%20on%20page%20%2Fadvanced/tutorial8_DMStack_NERSC.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button"
    title="Open an issue"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -257,7 +264,7 @@
       
       
       
-      <li><a href="../_sources/tutorials/tutorial8_DMStack_NERSC.ipynb" target="_blank"
+      <li><a href="../_sources/advanced/tutorial8_DMStack_NERSC.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -527,7 +534,7 @@ pipetask<span class="w"> </span>--long-log<span class="w"> </span>--log-file<spa
         },
         kernelOptions: {
             name: "desc-python",
-            path: "./tutorials"
+            path: "./advanced"
         },
         predefinedOutput: true
     }
@@ -545,12 +552,12 @@ pipetask<span class="w"> </span>--long-log<span class="w"> </span>--log-file<spa
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="tutorial7_SRV_releases.html"
+       href="../plans/data.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">SRV releases</p>
+        <p class="prev-next-title">Plans for data provision</p>
       </div>
     </a>
 </div>
