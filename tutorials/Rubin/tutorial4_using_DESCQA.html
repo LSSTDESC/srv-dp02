@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -36,10 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -65,6 +68,7 @@
     <link rel="prev" title="Using Rubin analysis tools" href="tutorial3_Rubin_analysistools.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -80,19 +84,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -100,7 +93,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -108,8 +100,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -125,7 +117,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -155,21 +148,17 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt="SRV DP0.2 Tutorials - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="SRV DP0.2 Tutorials - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="SRV DP0.2 Tutorials - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -318,24 +307,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -440,11 +421,11 @@ Last Verifed to Run: <strong>2024-06-04</strong> (by &#64;plarsen)</p>
 </div>
 </div>
 </div>
-<p>Now let’s decide on which tests to run. SkyArea is a nice simple test that I often use if I need a check that descqa is running correctly, so let’s use that. We’re using it on the small cosmoDC2 catalog as that will load fairly quickly.</p>
+<p>Now let’s decide on which tests to run. We’re going to run a quick tutorial test I’ve set up which plots the number density of galaxies as a function of RA and declination, and we’ll run it on a single-tract object catalog.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validations_to_run</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SkyArea&#39;</span><span class="p">]</span>
-<span class="n">catalogs_to_run</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cosmoDC2_v1.1.4_small&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validations_to_run</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;srv_tutorial&#39;</span><span class="p">]</span>
+<span class="n">catalogs_to_run</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lsst_object&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -485,11 +466,6 @@ Last Verifed to Run: <strong>2024-06-04</strong> (by &#64;plarsen)</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>51  length of file list 
-</pre></div>
-</div>
-</div>
 </div>
 <p>All the results will output in the folder you’ve specified, however there is some information from the test_result itself, I’ve made a little convenience function to output the information from there:</p>
 <div class="cell docutils container">
@@ -505,7 +481,7 @@ VALIDATION_TEST_INSPECT
 No pass/fail criterion specified, inspection only
 
 Summary message:
-approx. 72.5989 sq. deg.
+made a histogram to inspect!
 </pre></div>
 </div>
 </div>
@@ -520,10 +496,10 @@ approx. 72.5989 sq. deg.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>../test_direc/skymap.png
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>../test_direc/test_histogram.png
 </pre></div>
 </div>
-<img alt="../../_images/996c4dbdf81a69f26d2ad2b6c995a85c0c7097bcf3b12a4427226bb666804e50.png" src="../../_images/996c4dbdf81a69f26d2ad2b6c995a85c0c7097bcf3b12a4427226bb666804e50.png" />
+<img alt="../../_images/827a5a9fe29b5f6b75a2f901fc63f0437f25a41223eadcbfaead7b4ec884e765.png" src="../../_images/827a5a9fe29b5f6b75a2f901fc63f0437f25a41223eadcbfaead7b4ec884e765.png" />
 </div>
 </div>
 <section id="development">
@@ -540,37 +516,36 @@ approx. 72.5989 sq. deg.
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 
 
-<span class="k">class</span> <span class="nc">SkyArea2</span><span class="p">(</span><span class="n">BaseValidationTest</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Tutorial2</span><span class="p">(</span><span class="n">BaseValidationTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    validation test to show sky area</span>
+<span class="sd">    validation test to plot RA/DEC</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="c1">#pylint: disable=W0231</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nside</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nside&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
-        <span class="k">assert</span> <span class="n">hp</span><span class="o">.</span><span class="n">isnsideok</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nside</span><span class="p">),</span> <span class="s1">&#39;`nside` value </span><span class="si">{}</span><span class="s1"> not correct&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nside</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="c1"># initialize and get the inputs </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ra</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ra&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dec</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dec&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">catalog_filters</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;catalog_filters&#39;</span><span class="p">,</span> <span class="p">[])</span>
 
 
-    <span class="k">def</span> <span class="nf">run_on_single_catalog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">catalog_instance</span><span class="p">,</span> <span class="n">catalog_name</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">catalog_instance</span><span class="o">.</span><span class="n">has_quantities</span><span class="p">([</span><span class="s1">&#39;ra_true&#39;</span><span class="p">,</span> <span class="s1">&#39;dec_true&#39;</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="nf">run_on_single_catalog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">catalog_instance</span><span class="p">,</span> <span class="n">catalog_name</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">):</span> <span class="c1"># run the operation</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">catalog_instance</span><span class="o">.</span><span class="n">has_quantities</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">ra</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dec</span><span class="p">]):</span>
             <span class="k">return</span> <span class="n">TestResult</span><span class="p">(</span><span class="n">skipped</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is being developed locally!&quot;</span><span class="p">)</span>
 
-        <span class="n">pixels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">catalog_instance</span><span class="o">.</span><span class="n">get_quantities</span><span class="p">([</span><span class="s1">&#39;ra_true&#39;</span><span class="p">,</span> <span class="s1">&#39;dec_true&#39;</span><span class="p">],</span> <span class="n">return_iterator</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-            <span class="n">pixels</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">hp</span><span class="o">.</span><span class="n">ang2pix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nside</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;ra_true&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;dec_true&#39;</span><span class="p">],</span> <span class="n">lonlat</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="c1"># read in the data </span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">catalog_instance</span><span class="o">.</span><span class="n">get_quantities</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">ra</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">dec</span><span class="p">],</span><span class="n">filters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">catalog_filters</span><span class="p">,</span> <span class="n">return_iterator</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-        <span class="n">frac</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pixels</span><span class="p">)</span> <span class="o">/</span> <span class="n">hp</span><span class="o">.</span><span class="n">nside2npix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nside</span><span class="p">)</span>
-        <span class="n">skyarea</span> <span class="o">=</span> <span class="n">frac</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
-
-        <span class="n">hp_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">hp</span><span class="o">.</span><span class="n">nside2npix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nside</span><span class="p">))</span>
-        <span class="n">hp_map</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">hp</span><span class="o">.</span><span class="n">UNSEEN</span><span class="p">)</span>
-        <span class="n">hp_map</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">pixels</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">cmap</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colormaps</span><span class="p">[</span><span class="s1">&#39;magma&#39;</span><span class="p">]</span>
-
-        <span class="n">hp</span><span class="o">.</span><span class="n">mollview</span><span class="p">(</span><span class="n">hp_map</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">catalog_name</span><span class="p">,</span> <span class="n">coord</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s1">&#39;skymap.png&#39;</span><span class="p">))</span>
+        <span class="n">xbins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ra</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ra</span><span class="p">]),</span><span class="mi">50</span><span class="p">)</span>
+        <span class="n">ybins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dec</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dec</span><span class="p">]),</span><span class="mi">50</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ra</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dec</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">(</span><span class="n">xbins</span><span class="p">,</span><span class="n">ybins</span><span class="p">),</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;RA (degrees)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;dec (degrees)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s1">&#39;test_histogram.png&#39;</span><span class="p">))</span> <span class="c1"># create output #1 </span>
         <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">TestResult</span><span class="p">(</span><span class="n">inspect_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="s1">&#39;approx. </span><span class="si">{:.7g}</span><span class="s1"> sq. deg.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">skyarea</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">TestResult</span><span class="p">(</span><span class="n">inspect_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="s1">&#39;made a histogram to inspect!&#39;</span><span class="p">)</span> <span class="c1"># add output information</span>
 </pre></div>
 </div>
 </div>
@@ -581,10 +556,11 @@ validation</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we need to create an input dictionary to give any arguments required in the __init__ code, then we just initialize and run!</span>
 <span class="n">dict_config</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">dict_config</span><span class="p">[</span><span class="s1">&#39;nside&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">128</span>
-<span class="n">dict_config</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Displaying the sky coverage of each catalog&#39;</span>
+<span class="n">dict_config</span><span class="p">[</span><span class="s1">&#39;ra&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;coord_ra&#39;</span>
+<span class="n">dict_config</span><span class="p">[</span><span class="s1">&#39;dec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;coord_dec&#39;</span>
+<span class="n">dict_config</span><span class="p">[</span><span class="s1">&#39;catalog_filters&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="p">[</span><span class="s1">&#39;refExtendedness==1&#39;</span><span class="p">,</span><span class="s1">&#39;detect_isPrimary&#39;</span><span class="p">]</span>
 
-<span class="n">validation2</span> <span class="o">=</span> <span class="n">SkyArea2</span><span class="p">(</span><span class="o">**</span><span class="n">dict_config</span><span class="p">)</span>
+<span class="n">validation2</span> <span class="o">=</span> <span class="n">Tutorial2</span><span class="p">(</span><span class="o">**</span><span class="n">dict_config</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -597,12 +573,6 @@ validation</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This is being developed locally!
-51  length of file list 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -617,7 +587,7 @@ VALIDATION_TEST_INSPECT
 No pass/fail criterion specified, inspection only
 
 Summary message:
-approx. 72.5989 sq. deg.
+made a histogram to inspect!
 </pre></div>
 </div>
 </div>
@@ -631,10 +601,10 @@ approx. 72.5989 sq. deg.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>../test_direc/skymap.png
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>../test_direc/test_histogram.png
 </pre></div>
 </div>
-<img alt="../../_images/500dea9f9a31dca25458adbe0855917d135930395d6a1b375f01297873977096.png" src="../../_images/500dea9f9a31dca25458adbe0855917d135930395d6a1b375f01297873977096.png" />
+<img alt="../../_images/28137901a1be41f082e0ea2f548494a32ca1bc584015f5025ff75cb1eee006ee.png" src="../../_images/28137901a1be41f082e0ea2f548494a32ca1bc584015f5025ff75cb1eee006ee.png" />
 </div>
 </div>
 </section>
@@ -646,39 +616,42 @@ approx. 72.5989 sq. deg.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Now if we want to truly run and alter this interactively we might not want to waste time on IO, so why don&#39;t we pass in </span>
 <span class="c1">#the data as a dictionary in the meantime?</span>
+<span class="kn">from</span> <span class="nn">descqa.base</span> <span class="kn">import</span> <span class="n">BaseValidationTest</span><span class="p">,</span> <span class="n">TestResult</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">healpy</span> <span class="k">as</span> <span class="nn">hp</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 
 
-<span class="k">class</span> <span class="nc">SkyArea3</span><span class="p">(</span><span class="n">BaseValidationTest</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Tutorial3</span><span class="p">(</span><span class="n">BaseValidationTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    validation test to show sky area</span>
+<span class="sd">    validation test to plot RA/DEC</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="c1">#pylint: disable=W0231</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nside</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nside&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="c1"># initialize and get the inputs </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ra</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ra&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dec</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dec&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
-        <span class="k">assert</span> <span class="n">hp</span><span class="o">.</span><span class="n">isnsideok</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nside</span><span class="p">),</span> <span class="s1">&#39;`nside` value </span><span class="si">{}</span><span class="s1"> not correct&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nside</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">run_on_single_catalog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">catalog_instance</span><span class="p">,</span> <span class="n">catalog_name</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">):</span> <span class="c1"># run the operation</span>
 
-    <span class="k">def</span> <span class="nf">run_on_single_catalog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">catalog_instance</span><span class="p">,</span> <span class="n">catalog_name</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">catalog_instance</span><span class="o">.</span><span class="n">has_quantities</span><span class="p">([</span><span class="s1">&#39;ra_true&#39;</span><span class="p">,</span> <span class="s1">&#39;dec_true&#39;</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">catalog_instance</span><span class="o">.</span><span class="n">has_quantities</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">ra</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dec</span><span class="p">]):</span>
             <span class="k">return</span> <span class="n">TestResult</span><span class="p">(</span><span class="n">skipped</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data is being passed in&quot;</span><span class="p">)</span>
 
-        <span class="n">pixels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-        <span class="n">pixels</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">hp</span><span class="o">.</span><span class="n">ang2pix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nside</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;ra_true&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;dec_true&#39;</span><span class="p">],</span> <span class="n">lonlat</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-
-        <span class="n">frac</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pixels</span><span class="p">)</span> <span class="o">/</span> <span class="n">hp</span><span class="o">.</span><span class="n">nside2npix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nside</span><span class="p">)</span>
-        <span class="n">skyarea</span> <span class="o">=</span> <span class="n">frac</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
-
-        <span class="n">hp_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">hp</span><span class="o">.</span><span class="n">nside2npix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nside</span><span class="p">))</span>
-        <span class="n">hp_map</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">hp</span><span class="o">.</span><span class="n">UNSEEN</span><span class="p">)</span>
-        <span class="n">hp_map</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">pixels</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">cmap</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colormaps</span><span class="p">[</span><span class="s1">&#39;Pastel1&#39;</span><span class="p">]</span>
-
-        <span class="n">hp</span><span class="o">.</span><span class="n">mollview</span><span class="p">(</span><span class="n">hp_map</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">catalog_name</span><span class="p">,</span> <span class="n">coord</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s1">&#39;skymap.png&#39;</span><span class="p">))</span>
+        <span class="c1"># read in the data </span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">xbins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ra</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ra</span><span class="p">]),</span><span class="mi">50</span><span class="p">)</span>
+        <span class="n">ybins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dec</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dec</span><span class="p">]),</span><span class="mi">50</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ra</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dec</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">(</span><span class="n">xbins</span><span class="p">,</span><span class="n">ybins</span><span class="p">),</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;RA (degrees)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;dec (degrees)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s1">&#39;test_histogram.png&#39;</span><span class="p">))</span> <span class="c1"># create output #1 </span>
         <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">TestResult</span><span class="p">(</span><span class="n">inspect_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="s1">&#39;approx. </span><span class="si">{:.7g}</span><span class="s1"> sq. deg.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">skyarea</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">TestResult</span><span class="p">(</span><span class="n">inspect_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="s1">&#39;made a histogram to inspect!&#39;</span><span class="p">)</span> <span class="c1"># add output information</span>
 </pre></div>
 </div>
 </div>
@@ -686,24 +659,18 @@ approx. 72.5989 sq. deg.
 <p>The only added step I need is to take out that data read, and put it externally (note that we load the whole dataset here not an iterative chunk).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">catalog_instances</span><span class="p">[</span><span class="n">catalog</span><span class="p">]</span><span class="o">.</span><span class="n">get_quantities</span><span class="p">([</span><span class="s1">&#39;ra_true&#39;</span><span class="p">,</span> <span class="s1">&#39;dec_true&#39;</span><span class="p">],</span> <span class="n">return_iterator</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filters</span> <span class="o">=</span>  <span class="p">[</span><span class="s1">&#39;refExtendedness==1&#39;</span><span class="p">,</span><span class="s1">&#39;detect_isPrimary&#39;</span><span class="p">]</span>
 
+<span class="n">d</span> <span class="o">=</span> <span class="n">catalog_instances</span><span class="p">[</span><span class="n">catalog</span><span class="p">]</span><span class="o">.</span><span class="n">get_quantities</span><span class="p">([</span><span class="s1">&#39;coord_ra&#39;</span><span class="p">,</span> <span class="s1">&#39;coord_dec&#39;</span><span class="p">],</span> <span class="n">filters</span><span class="o">=</span><span class="n">filters</span><span class="p">,</span> <span class="n">return_iterator</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="c1"># we need to create an input dictionary to give any arguments required in the __init__ code, then we just initialize and run!</span>
 <span class="n">dict_config</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">dict_config</span><span class="p">[</span><span class="s1">&#39;ra&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;coord_ra&#39;</span>
+<span class="n">dict_config</span><span class="p">[</span><span class="s1">&#39;dec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;coord_dec&#39;</span>
 <span class="n">dict_config</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span>
-<span class="n">dict_config</span><span class="p">[</span><span class="s1">&#39;nside&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">128</span>
-<span class="n">dict_config</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Displaying the sky coverage of each catalog&#39;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>51  length of file list 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation3</span> <span class="o">=</span> <span class="n">SkyArea3</span><span class="p">(</span><span class="o">**</span><span class="n">dict_config</span><span class="p">)</span>
+
+<span class="n">validation3</span> <span class="o">=</span> <span class="n">Tutorial3</span><span class="p">(</span><span class="o">**</span><span class="n">dict_config</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -716,11 +683,6 @@ approx. 72.5989 sq. deg.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data is being passed in
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -735,7 +697,7 @@ VALIDATION_TEST_INSPECT
 No pass/fail criterion specified, inspection only
 
 Summary message:
-approx. 72.5989 sq. deg.
+made a histogram to inspect!
 </pre></div>
 </div>
 </div>
@@ -749,10 +711,10 @@ approx. 72.5989 sq. deg.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>../test_direc/skymap.png
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>../test_direc/test_histogram.png
 </pre></div>
 </div>
-<img alt="../../_images/b3757cb10ddb2aa53b3c6e6439df07f9540c5c86d96d759d68f28b9f4f14245c.png" src="../../_images/b3757cb10ddb2aa53b3c6e6439df07f9540c5c86d96d759d68f28b9f4f14245c.png" />
+<img alt="../../_images/34ae12320f09ff848f12b42c0f5105d3eee76949978505b212632b55214ec3fe.png" src="../../_images/34ae12320f09ff848f12b42c0f5105d3eee76949978505b212632b55214ec3fe.png" />
 </div>
 </div>
 </section>
@@ -813,7 +775,8 @@ approx. 72.5989 sq. deg.
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -879,8 +842,8 @@ By LSST DESC
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>

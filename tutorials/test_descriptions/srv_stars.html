@@ -1,0 +1,714 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DESCQA-SRV stars &#8212; SRV DP0.2 Tutorials</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/test_descriptions/srv_stars';</script>
+    <link rel="canonical" href="https://lsstdesc.github.io/srv-dp02/tutorials/test_descriptions/srv_stars.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="SRV DP0.2 Tutorials - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="SRV DP0.2 Tutorials - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    SRV Tutorials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials (Rubin data)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Rubin/DP02_intro.html">DP0.2 Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rubin/tutorial1_reading_objects.html">GCR access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rubin/tutorial2_alternate_reads.html">Beyond-GCR access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rubin/tutorial3_Rubin_analysistools.html">Using Rubin analysis tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rubin/tutorial4_using_DESCQA.html">Running DESCQA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rubin/tutorial7_SRV_releases.html">SRV releases</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Plans for data arrival</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../plans/data.html">Plans for data provision</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/tutorial8_DMStack_NERSC.html">Running SSI using Rubin pipelines (move this)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/LSSTDESC/srv-dp02/issues/new?title=Issue%20on%20page%20%2Ftutorials/test_descriptions/srv_stars.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/tutorials/test_descriptions/srv_stars.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DESCQA-SRV stars</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stars-in-context">Stars in context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubin-testing">Rubin testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calibrated-exposures-calexps">Calibrated exposures (calexps)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matched-visits-all-visits-for-each-source">Matched visits (all visits for each source)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-catalog-measured-from-coadds">Object Catalog (measured from coadds)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#star-galaxy-separation">Star-galaxy separation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrics-and-updates">Metrics and Updates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desc-srd-requirements">DESC SRD requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-improve-these-results">How to improve these results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-updates">Notebook updates</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="descqa-srv-stars">
+<h1>DESCQA-SRV stars<a class="headerlink" href="#descqa-srv-stars" title="Link to this heading">#</a></h1>
+<p>Owners: <strong>PatriciaLarsen <a class="reference external" href="https://github.com/LSSTDESC/DC2-analysis/issues/new?body=&#64;patricialarsen">&#64;plarsen</a></strong><br />
+Last Verifed to Run: <strong>2024-06-04</strong> (by &#64;plarsen)</p>
+<p>This notebook details the DESCQA-SRV star test. This test can be run on the command line for the full dp0.2 catalog using</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>./run_master.sh<span class="w"> </span>-t<span class="w"> </span>srv_stars<span class="w"> </span>-c<span class="w"> </span>dp02
+</pre></div>
+</div>
+<p>First let’s load the catalog and then get started! We’re doing a single tract catalog to go through code explanations, and then we’ll point to the results of a full run.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;/global/cfs/projectdirs/lsst/groups/SRV/gcr-catalogs-test&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">GCRCatalogs</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">catalog</span> <span class="o">=</span> <span class="n">GCRCatalogs</span><span class="o">.</span><span class="n">load_catalog</span><span class="p">(</span><span class="s1">&#39;lsst_object&#39;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<section id="stars-in-context">
+<h2>Stars in context<a class="headerlink" href="#stars-in-context" title="Link to this heading">#</a></h2>
+<p>Star catalogs are important for cosmology in several ways, their brightness can obscure background galaxies, they are commonly used to assess image quality, and they are used to create maps of the point spread function.</p>
+<p>In this test we first look at the star selection, this is typically performed in LSST using the extendedness parameter (see <a class="github reference external" href="https://github.com/rubin-dp0/delegate-contributions-dp02/blob/main/extendedness/intro_to_star_gal_sep.ipynb">rubin-dp0/delegate-contributions-dp02</a> for more details). Further sub-selections are then used to high S/N stars for image quality assessment, and to high probability stars for psf determination, called psf_candidate objects. Within the PSF candidates, additional cuts are often necessary to remove bright stars prone to brighter-fatter effects, and to reserve a subset of candidates for testing purposes.</p>
+</section>
+<section id="rubin-testing">
+<h2>Rubin testing<a class="headerlink" href="#rubin-testing" title="Link to this heading">#</a></h2>
+<p>The Rubin Observatory LSST project runs a number of tests using the star catalogs, here I’m summarising based on <a class="reference external" href="https://sitcomtn-124.lsst.io/#visit-level-metrics">operations rehearsal 3</a>, but you can see what is typically run in the yaml file <a class="reference external" href="https://github.com/lsst/analysis_tools/blob/main/pipelines/visitQualityCore.yaml">here</a>.</p>
+<section id="calibrated-exposures-calexps">
+<h3>Calibrated exposures (calexps)<a class="headerlink" href="#calibrated-exposures-calexps" title="Link to this heading">#</a></h3>
+<p>These are typically looking at the differences between the point spread function ellipticity and size with the true point spread function measured at the star position.</p>
+<ul class="simple">
+<li><p>psfStarDeltaE1/E2 Median and Scatter</p></li>
+<li><p>psfStarDeltaSize Median and Scatter</p></li>
+<li><p>psfStarScaledDeltaSizeScatter</p></li>
+</ul>
+</section>
+<section id="matched-visits-all-visits-for-each-source">
+<h3>Matched visits (all visits for each source)<a class="headerlink" href="#matched-visits-all-visits-for-each-source" title="Link to this heading">#</a></h3>
+<p>As the matched visits have multiple measurements of the same objects, they use these to test how repeatible the measurements are.</p>
+<ul class="simple">
+<li><p>stellarAstrometricRepeatability (1/2/3)</p></li>
+<li><p>stellarAstrometricSelfRepeatability (RA/Dec)</p></li>
+<li><p>stellarPhotometricRepeatability</p></li>
+<li><p>stellarPhotometricResiduals</p></li>
+</ul>
+</section>
+<section id="object-catalog-measured-from-coadds">
+<h3>Object Catalog (measured from coadds)<a class="headerlink" href="#object-catalog-measured-from-coadds" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>validPsfFluxMetric: column checks for numbers being within reasonable ranges</p></li>
+<li><p>e1/2Diff: Statistics of residual of e1 ellipticity measurement of sources relative to the PSF (high and low S/N)</p></li>
+<li><p>shapeSizeFractionalDiff: Fractional size residuals relative to PSF (high and low S/N)</p></li>
+<li><p>wPerpPSFP: width of blue portion of the stellar locus in (r-i) vs. (g-r)</p></li>
+<li><p>xPerpCModel: width of red portion of the stellar locus in (r-i) vs. (g-r)</p></li>
+</ul>
+</section>
+</section>
+<section id="star-galaxy-separation">
+<h2>Star-galaxy separation<a class="headerlink" href="#star-galaxy-separation" title="Link to this heading">#</a></h2>
+<p>A common check of this star selection is to look at the stellar locus in color-color space. Note as above the width of this in (r-i) and (g-r) space is a core metric tracked by the project. Let’s first look at this star selection using the calib_psf_candidate, calib_psf_reserved and calib_psf_used flags.</p>
+<p>First we need to quickly read in the data, we’ll cut on the psfFlux_flag, the extendness flag and detect_isPrimary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read necessary quantities </span>
+<span class="c1">#For stars you typically want to use the PSFflux quantities. </span>
+
+<span class="n">quantities</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;coord_ra&quot;</span><span class="p">,</span><span class="s2">&quot;coord_dec&quot;</span><span class="p">]</span>
+<span class="n">bands</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">,</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">bands</span><span class="p">:</span>
+    <span class="n">quantities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_psfFlux&quot;</span><span class="p">)</span>
+    <span class="n">quantities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_psfFluxErr&quot;</span><span class="p">)</span>
+    <span class="n">quantities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_calib_psf_candidate&quot;</span><span class="p">)</span>
+    <span class="n">quantities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_calib_psf_used&quot;</span><span class="p">)</span>
+    <span class="n">quantities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_calib_psf_reserved&quot;</span><span class="p">)</span>
+    <span class="n">quantities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_extendedness&quot;</span><span class="p">)</span>
+    <span class="n">quantities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_ixx&quot;</span><span class="p">)</span>
+    <span class="n">quantities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_ixy&quot;</span><span class="p">)</span>
+    <span class="n">quantities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_iyy&quot;</span><span class="p">)</span>
+    <span class="n">quantities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_ixxPSF&quot;</span><span class="p">)</span>
+    <span class="n">quantities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_ixyPSF&quot;</span><span class="p">)</span>
+    <span class="n">quantities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_iyyPSF&quot;</span><span class="p">)</span>
+    
+<span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;detect_isPrimary&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">bands</span><span class="p">:</span>
+    <span class="n">filters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_psfFlux_flag==False&quot;</span><span class="p">)</span>
+    <span class="n">filters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_extendedness_flag==False&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">get_quantities</span><span class="p">(</span><span class="n">quantities</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="n">filters</span><span class="p">)</span>  
+
+<span class="n">ra</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;coord_ra&#39;</span><span class="p">]</span>
+<span class="n">dec</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;coord_dec&#39;</span><span class="p">]</span>
+
+<span class="c1"># multiple possible definitions of this size, LSST tends to use np.sqrt((data[&#39;r_ixx&#39;]+data[&#39;r_iyy&#39;])/2.)</span>
+<span class="n">size</span><span class="o">=</span><span class="p">{}</span>
+<span class="n">size_PSF</span><span class="o">=</span><span class="p">{}</span>
+<span class="n">e_12</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">e_12_PSF</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">mags</span><span class="o">=</span><span class="p">{}</span>
+<span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">bands</span><span class="p">:</span>
+    <span class="n">size</span><span class="p">[</span><span class="n">band</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_ixx&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_iyy&quot;</span><span class="p">]</span>
+    <span class="n">size_PSF</span><span class="p">[</span><span class="n">band</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_ixxPSF&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_iyyPSF&quot;</span><span class="p">]</span>
+    <span class="n">e_12</span><span class="p">[</span><span class="n">band</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_ixx&quot;</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_ixy&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_iyy&quot;</span><span class="p">])</span>
+    <span class="n">e_12_PSF</span><span class="p">[</span><span class="n">band</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_ixxPSF&quot;</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_ixyPSF&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_iyyPSF&quot;</span><span class="p">])</span>
+    <span class="n">mags</span><span class="p">[</span><span class="n">band</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_nanoJansky_to_mag</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="o">+</span><span class="s2">&quot;_psfFlux&quot;</span><span class="p">])</span>
+    
+<span class="c1">#we&#39;re going to use r,g,i bands to define our samples</span>
+<span class="n">mask_stars</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;i_extendedness&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;g_extendedness&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;r_extendedness&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">mask_candidates</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;g_calib_psf_candidate&#39;</span><span class="p">]</span><span class="o">&amp;</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;i_calib_psf_candidate&#39;</span><span class="p">]</span><span class="o">&amp;</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;r_calib_psf_candidate&#39;</span><span class="p">]</span>
+<span class="n">mask_used</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;g_calib_psf_used&#39;</span><span class="p">]</span><span class="o">&amp;</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;i_calib_psf_used&#39;</span><span class="p">]</span><span class="o">&amp;</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;r_calib_psf_used&#39;</span><span class="p">]</span>
+<span class="n">mask_reserve</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;g_calib_psf_reserved&#39;</span><span class="p">]</span><span class="o">&amp;</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;i_calib_psf_reserved&#39;</span><span class="p">]</span><span class="o">&amp;</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;r_calib_psf_reserved&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we plot the stellar locus. Here we can visually see the galaxy contamination as a fuzzy cloud in the extendedness-defined sample, which is entirely removed in the candidate PSF stars. You can also see the number of objects sharply decreasing as strict limits are set on the purity.</p>
+<p>From looking at the numbers as a function of magnitude, we see that the main method for this is to remove fainter objects which are less easily distinguished. You can also see that the PSF candidates extend to lower magnitudes than the objects distinguished by extendedness. This appears to be a failure of the extendedness selection for bright saturated objects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">mags</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">mags</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">],</span> <span class="n">mags</span><span class="p">[</span><span class="s2">&quot;g&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">mags</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;all objects&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;g-r&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;r-i&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist2d</span><span class="p">((</span><span class="n">mags</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">mags</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">])[</span><span class="n">mask_stars</span><span class="p">],</span> <span class="p">(</span><span class="n">mags</span><span class="p">[</span><span class="s2">&quot;g&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">mags</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">])[</span><span class="n">mask_stars</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;extendedness=0&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;r-i&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">hist2d</span><span class="p">((</span><span class="n">mags</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">mags</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">])[</span><span class="n">mask_candidates</span><span class="p">],</span> <span class="p">(</span><span class="n">mags</span><span class="p">[</span><span class="s2">&quot;g&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">mags</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">])[</span><span class="n">mask_candidates</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;candidate PSF stars&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;r-i&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total number of objects is: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all objects = &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;coord_ra&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;extendedness=0 objects = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mask_stars</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;candidate PSF stars = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mask_candidates</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stars used for PSF determination = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mask_used</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mags</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">][</span><span class="n">mask_stars</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;extendedness=0&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mags</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">][</span><span class="n">mask_candidates</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;PSF candidates&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;mag_r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;number of objects&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/bd789befbf6f164ac625884182b6700734fd9f58414b9147dca7b4dea0fcd096.png" src="../../_images/bd789befbf6f164ac625884182b6700734fd9f58414b9147dca7b4dea0fcd096.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of objects is: 
+all objects =  883182
+extendedness=0 objects =  105690
+candidate PSF stars =  4086
+stars used for PSF determination =  3962
+</pre></div>
+</div>
+<img alt="../../_images/050d0c2bf5d8aba168e0603d39f027ceab1ed86e7503bb767da4cb89a0af7765.png" src="../../_images/050d0c2bf5d8aba168e0603d39f027ceab1ed86e7503bb767da4cb89a0af7765.png" />
+</div>
+</div>
+</section>
+<section id="results">
+<h2>Results:<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
+<p>Finally we look at this extendedness as a function of magnitude for these candidate stars, where you can see these objects being classified as extended objects, and then do another common test of the star-galaxy separation, which is the object size.</p>
+<p>You can see the object size for candidate PSF stars being narrowly defined with again a large cloud of sizes being more typical of galaxies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">mags</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">][</span><span class="n">mask_candidates</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;r_extendedness&#39;</span><span class="p">][</span><span class="n">mask_candidates</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">40</span><span class="p">)])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;mag_r&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;r_extendedness&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;candidate stars (extendedness)&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">mags</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">],</span> <span class="n">size</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;mag_r&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;size_r&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;all objects (size)&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">mags</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">][</span><span class="n">mask_candidates</span><span class="p">],</span> <span class="n">size</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">][</span><span class="n">mask_candidates</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mi">100</span><span class="p">)])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;candidate stars (size)&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;mag_r&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;size_r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/34436f259ecddfbedc447c0e087659ca87aec25e506e5d8820e68d64449416bf.png" src="../../_images/34436f259ecddfbedc447c0e087659ca87aec25e506e5d8820e68d64449416bf.png" />
+</div>
+</div>
+</section>
+<section id="metrics-and-updates">
+<h2>Metrics and Updates<a class="headerlink" href="#metrics-and-updates" title="Link to this heading">#</a></h2>
+<p>The science requirements document for DESC is <a class="reference external" href="https://arxiv.org/abs/1809.01669">here</a>, and the LSST one is <a class="reference external" href="https://www.lsst.org/scientists/publications/science-requirements-document">here</a>.</p>
+<p>From the LSST requirements document, we relate the most relevant requirements. Note that PSF metrics are in the srv_shear test, and photometric metrics are in the srv_photometry test. Depth is also defined using star catalogs, but will be detailed in a separate test.</p>
+<section id="desc-srd-requirements">
+<h3>DESC SRD requirements<a class="headerlink" href="#desc-srd-requirements" title="Link to this heading">#</a></h3>
+<p>Stellar contamination</p>
+<ul class="simple">
+<li><p>Detailed requirement WL5 (Y10): Systematic uncertainty in the stellar contamination of the source sample shall not exceed 0.1% in the Y10 DESC WL analysis.</p></li>
+<li><p>Goal WL5 (Y1): Systematic uncertainty in the stellar contamination of the source sample should not exceed 0.4% in the Y1 DESC WL analysis.</p></li>
+</ul>
+<p>We also note that the number of standard stars observed as a metric of important to SN:</p>
+<ul class="simple">
+<li><p>Our ability to calibrate the LSST photometric system for the supernovae depends on the number of standard stars used for calibration, as any systematic uncertainty related to spatial uniformity reduces as √Nstandards. Observing multiple standard stars over the field of view is therefore central to achieving our calibration goals while staying within LSST SRD requirements.</p></li>
+</ul>
+</section>
+<section id="how-to-improve-these-results">
+<h3>How to improve these results<a class="headerlink" href="#how-to-improve-these-results" title="Link to this heading">#</a></h3>
+<p>If you require a cleaner sample, you can consider a number of options</p>
+<ul class="simple">
+<li><p>cross-matching to external star catalogs for bright stars</p></li>
+<li><p>restricting to high S/N stars</p></li>
+<li><p>restricting the magnitudes as is done for the PSF</p></li>
+</ul>
+<p>Anything other star-based tests you’d like to add? Please contact the SRV working group or submit a github issue!</p>
+</section>
+</section>
+<section id="notebook-updates">
+<h2>Notebook updates<a class="headerlink" href="#notebook-updates" title="Link to this heading">#</a></h2>
+<p>Things we’d like to add or update if we have the time!</p>
+<ul class="simple">
+<li><p>quantify stellar contamination</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "desc-python",
+            path: "./tutorials/test_descriptions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'desc-python'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stars-in-context">Stars in context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubin-testing">Rubin testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calibrated-exposures-calexps">Calibrated exposures (calexps)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matched-visits-all-visits-for-each-source">Matched visits (all visits for each source)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-catalog-measured-from-coadds">Object Catalog (measured from coadds)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#star-galaxy-separation">Star-galaxy separation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrics-and-updates">Metrics and Updates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desc-srd-requirements">DESC SRD requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-improve-these-results">How to improve these results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-updates">Notebook updates</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By LSST DESC
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
