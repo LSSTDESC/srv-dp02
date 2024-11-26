@@ -14,6 +14,9 @@ parts:
 - caption: Plans for data arrival
   chapters:
   - glob: plans/*
+- caption: Validation test descriptions
+  chapters: 
+  - glob: tutorials/test_descriptions/*
 - caption: Advanced topics
   chapters: 
   - glob: advanced/*
