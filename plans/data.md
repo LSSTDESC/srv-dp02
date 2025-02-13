@@ -1,17 +1,20 @@
 # Plans for data provision
-In this section we relay current plans for data access once we move on to data releases. This is subject to change, the current version was updated in August 2024.
+In this section we relay current plans for data access once we move on to data releases. This is subject to change, the current version was updated in February 2025.
 
 ##### Timeline
 The most up-to-date status of the project and timeline can be found [here](https://www.lsst.org/about/project-status).
 As of writing this gives roughly:
 
-- First light end of March 2025
-  - DP1 (first data preview release) 2-3 months later, ~June-July 2025
-  - Survey start 4-7 months later, ~August-November 2025
-  - DP2 (second data preview) 9-12 months later, ~January-March 2026
+- First light start of July 2025
+  - DP1 (first data preview release) 2-3 months later, ~ September - October 2025
+  - Survey start 4-7 months later, ~ November 2025 - February 2026
+  - DP2 (second data preview) 9-12 months later, ~ April - July 2026
 
 - First data release (DR1) anticipated 12-14 months after survey start
-  - Roughly late 2026- early 2027
+  - Roughly late 2026 - early 2027
+
+The list of data that will be included in the previews is listed in Table~1 of the [Early Science Program document](https://rtn-011.lsst.io), with stretch goals additionally listed. This is subject to change, and has evolved significantly over the last few months, but we currently expect to have coadded images and object catalogs from ComCam in DP1. 
+
 
 ##### Data Location
 All data will be accessible through the Rubin Science Platform and the TAP protocol, however we are planning to transfer significant amounts of this data to NERSC. The current plan is to transfer the following list of static science datasets. Contact Matt Becker and Nacho Sevilla with questions/concerns. 
