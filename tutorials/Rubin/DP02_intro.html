@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,10 +27,10 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -200,9 +200,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -377,7 +382,7 @@ Last Verifed to Run: <strong>2024-06-04</strong> (by &#64;plarsen)</p>
 <p>For the contexts of these tutorials we’re showing how to use the DP0.2 data available on NERSC. This is for the most part catalog-level data stored in flat files, most often in parquet format. If you would like to use the full set of DP0.2 data available, you can do so by becoming a DP0.2 delegate and accessing the data on the RSP. Delegate applications are currently open to all data rights holders, and you can follow the instructions <a class="reference external" href="https://dp0.lsst.io/delegate-resources/index.html">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
@@ -388,7 +393,7 @@ Last Verifed to Run: <strong>2024-06-04</strong> (by &#64;plarsen)</p>
 <section id="dc2">
 <h3>DC2<a class="headerlink" href="#dc2" title="Link to this heading">#</a></h3>
 <p>DC2 is an ambitious data challenge going all the way from N-body simulations to LSST-like images, followed by mock observations. These include a number of complex effects including stellar contamination, galactic reddening, varying observing conditions, survey strategy and instrumental and detector artifacts. The extragalactic catalog is described in <a class="reference external" href="https://arxiv.org/abs/1907.06530">https://arxiv.org/abs/1907.06530</a>, with the validation framework in <a class="reference external" href="https://arxiv.org/abs/2110.03769">https://arxiv.org/abs/2110.03769</a>, and the image simulation campaign in <a class="reference external" href="https://arxiv.org/abs/2010.05926">https://arxiv.org/abs/2010.05926</a>. The processing was run using version 19.0.0 of the LSST Science Pipelines. The data can be found at NERSC, with a data product overview found <a class="reference external" href="https://confluence.slac.stanford.edu/display/LSSTDESC/DC2+Data+Product+Overview">here</a> and many tutorials showing how to access and inspect this data at <a class="reference external" href="http://lsstdesc.org/DC2-analysis/">http://lsstdesc.org/DC2-analysis/</a>.</p>
-<img src='../plots/dc2.png' width="1000">
+<p><img alt="" src="../../_images/dc2.png" /></p>
 <p>LSST Dark Energy Science Collaboration et al. 2021</p>
 </section>
 <section id="dp0-2">
@@ -579,8 +584,8 @@ By LSST DESC
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
